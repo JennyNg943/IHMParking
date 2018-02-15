@@ -5,6 +5,71 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript">
+      function delParking(park){
+        var item = document.getElementById(park);
+        item.parentNode.removeChild(item);
+      }
+
+      function addPark(n, t, g, p, m, c){
+        var parkName = document.getElementById(n).value;
+        var parkType = document.getElementsByName(t);
+        for (var i = 0, length = parkType.length; i < length; i++)
+        {
+         if (parkType[i].checked)
+         {
+          parkType = parkType[i].value;
+          break;
+         }
+        }
+
+        var parkGPS = document.getElementById(g).value;
+        var parkPlace = document.getElementById(p).value;
+        var parkMail = document.getElementById(m).value;
+        var parkCompt = document.getElementById(c).value;
+        
+        var park = document.createElement('tr');
+        park.setAttribute('id', parkName);
+
+        var parkTdNom = document.createElement('td');
+        parkTdNom.innerHTML += parkName;
+        var parkTdType = document.createElement('td');
+        parkTdType.innerHTML += parkType;
+        var parkTdGPS = document.createElement('td');
+        parkTdGPS.innerHTML += parkGPS;
+        var parkTdPlace = document.createElement('td');
+        parkTdPlace.innerHTML += parkPlace;
+        var parkTdMail = document.createElement('td');
+        parkTdMail.innerHTML += parkMail;
+        var parkTdCompt = document.createElement('td');
+        parkTdCompt.innerHTML += parkCompt;
+        var parkTdAction = document.createElement('td');
+
+        var aModif = document.createElement('a');
+        aModif.setAttribute('href', '#');
+        aModif.innerHTML += 'Modifier';
+        var aSuppr = document.createElement('a');
+        aSuppr.setAttribute('href', '#');
+        aSuppr.setAttribute('onclick', 'delParking("'+parkName+'")');
+        aSuppr.innerHTML += 'Supprimer';
+
+        parkTdAction.appendChild(aModif);
+        parkTdAction.appendChild(aSuppr);
+
+        park.appendChild(parkTdNom);
+        park.appendChild(parkTdType);
+        park.appendChild(parkTdGPS);
+        park.appendChild(parkTdPlace);
+        park.appendChild(parkTdMail);
+        park.appendChild(parkTdCompt);
+        park.appendChild(parkTdAction);
+
+        document.getElementById('listParking').appendChild(park);
+
+      }
+    </script>
+
   </head>
   <body>
     <header>
@@ -17,7 +82,7 @@
             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Tableaux des parkings
             </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btnPark">
               Ajouter un parking
             </button>
           </h5>
@@ -25,7 +90,7 @@
 
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
-            <table>
+            <table id="listParking">
               <tr>
                 <th>Nom</th>
                 <th>Type de véhicule</th>
@@ -35,7 +100,7 @@
                 <th>Système de comptabe</th>
                 <th>Action</th>
               </tr>
-              <tr>
+              <tr id="Nautibus">
                 <td>Nautibus</td>
                 <td>Auto et vélo</td>
                 <td>201.25.254.3</td>
@@ -44,7 +109,31 @@
                 <td> ??? </td>
                 <td>
                   <a href="#">Modifier</a>
-                  <a href="#">Supprimer</a>
+                  <a href="#" onclick="delParking('Nautibus')">Supprimer</a>
+                </td>
+              </tr>
+              <tr id="Themis">
+                <td>Themis</td>
+                <td>Auto</td>
+                <td>281.25.154.2</td>
+                <td>17</td>
+                <td>themisParking@univ-lyon1.fr</td>
+                <td> ??? </td>
+                <td>
+                  <a href="#">Modifier</a>
+                  <a href="#" onclick="delParking('Themis')">Supprimer</a>
+                </td>
+              </tr>
+              <tr id="Deambu">
+                <td>Deambu</td>
+                <td>Auto et vélo</td>
+                <td>141.215.287.3</td>
+                <td>17</td>
+                <td>deambuParking@univ-lyon1.fr</td>
+                <td> ??? </td>
+                <td>
+                  <a href="#">Modifier</a>
+                  <a href="#" onclick="delParking('Deambu')">Supprimer</a>
                 </td>
               </tr>
             </table>
@@ -53,7 +142,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -64,25 +153,60 @@
           </div>
           <div class="modal-body">
             <form>
-              <label>Nom : </label><input type="text">
+              <table id="addNewPark">
+                <tr>
+                  <td><label>Nom : </label></td>
+                  <td><input type="text" id="newNom"></td>
+                </tr>
+                <tr>
+                  <td><label>Type de véichules : </label></td>
+                  <td>
+                    <input type="radio" id="newType1" name="newType" value="Auto" checked="checked"><label for="newType1">Auto</label>
+                    <input type="radio" id="newType2" name="newType" value="Vélo"><label for="newType2">Vélo</label>
+                    <input type="radio" id="newType3" name="newType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label>Coordonnées GPS : </label></td>
+                  <td><input type="text" id="newGPS" value="0.0.0.0"></td>
+                </tr>
+                <tr>
+                  <td><label>Nombre de places : </label></td>
+                  <td><input type="text" id="newNbPlaces" value="100"></td>
+                </tr>
+                <tr>
+                  <td><label>Mail responsable : </label></td>
+                  <td><input type="text" id="newMail"></td>
+                </tr>
+                <tr>
+                  <td><label>Système de comptabe : </label></td>
+                  <td><input type="text" id="newCompt" value="???"></td>
+                </tr>
+              </table>
+              
+              
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+    
+    <script>
+      $(document).ready(function(){
+          $("#btnPark").click(function(){
+              $("#myModal").modal();
+          });
+      });
+    </script>
 
     <footer>
 
     </footer>
   </body>
-  <script src="javascript.js">
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').focus()
-    })
-  </script>
+  
 
 </html>
