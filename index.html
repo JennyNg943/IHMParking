@@ -5,70 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript">
-      function delParking(park){
-        var item = document.getElementById(park);
-        item.parentNode.removeChild(item);
-      }
-
-      function addPark(n, t, g, p, m, c){
-        var parkName = document.getElementById(n).value;
-        var parkType = document.getElementsByName(t);
-        for (var i = 0, length = parkType.length; i < length; i++)
-        {
-         if (parkType[i].checked)
-         {
-          parkType = parkType[i].value;
-          break;
-         }
-        }
-
-        var parkGPS = document.getElementById(g).value;
-        var parkPlace = document.getElementById(p).value;
-        var parkMail = document.getElementById(m).value;
-        var parkCompt = document.getElementById(c).value;
-        
-        var park = document.createElement('tr');
-        park.setAttribute('id', parkName);
-
-        var parkTdNom = document.createElement('td');
-        parkTdNom.innerHTML += parkName;
-        var parkTdType = document.createElement('td');
-        parkTdType.innerHTML += parkType;
-        var parkTdGPS = document.createElement('td');
-        parkTdGPS.innerHTML += parkGPS;
-        var parkTdPlace = document.createElement('td');
-        parkTdPlace.innerHTML += parkPlace;
-        var parkTdMail = document.createElement('td');
-        parkTdMail.innerHTML += parkMail;
-        var parkTdCompt = document.createElement('td');
-        parkTdCompt.innerHTML += parkCompt;
-        var parkTdAction = document.createElement('td');
-
-        var aModif = document.createElement('a');
-        aModif.setAttribute('href', '#');
-        aModif.innerHTML += 'Modifier';
-        var aSuppr = document.createElement('a');
-        aSuppr.setAttribute('href', '#');
-        aSuppr.setAttribute('onclick', 'delParking("'+parkName+'")');
-        aSuppr.innerHTML += 'Supprimer';
-
-        parkTdAction.appendChild(aModif);
-        parkTdAction.appendChild(aSuppr);
-
-        park.appendChild(parkTdNom);
-        park.appendChild(parkTdType);
-        park.appendChild(parkTdGPS);
-        park.appendChild(parkTdPlace);
-        park.appendChild(parkTdMail);
-        park.appendChild(parkTdCompt);
-        park.appendChild(parkTdAction);
-
-        document.getElementById('listParking').appendChild(park);
-
-      }
-    </script>
+    <script type="text/javascript" src="JS/script.js"></script>
 
   </head>
   <body>
@@ -101,38 +38,38 @@
                 <th>Action</th>
               </tr>
               <tr id="Nautibus">
-                <td>Nautibus</td>
-                <td>Auto et vélo</td>
-                <td>201.25.254.3</td>
-                <td>17</td>
-                <td>nautibusParking@univ-lyon1.fr</td>
-                <td> ??? </td>
+                <td id="name">Nautibus</td>
+                <td id="type">Auto et vélo</td>
+                <td id="GPS">201.25.254.3</td>
+                <td id="place">17</td>
+                <td id="mail">nautibusParking@univ-lyon1.fr</td>
+                <td id="compt"> ??? </td>
                 <td>
-                  <a href="#">Modifier</a>
+                  <a href="#" class="modBtn" onclick="modParkingOpen('Nautibus')">Modifier</a>
                   <a href="#" onclick="delParking('Nautibus')">Supprimer</a>
                 </td>
               </tr>
               <tr id="Themis">
-                <td>Themis</td>
-                <td>Auto</td>
-                <td>281.25.154.2</td>
-                <td>17</td>
-                <td>themisParking@univ-lyon1.fr</td>
-                <td> ??? </td>
+                <td id="name">Themis</td>
+                <td id="type">Auto</td>
+                <td id="GPS">281.25.154.2</td>
+                <td id="place">17</td>
+                <td id="mail">themisParking@univ-lyon1.fr</td>
+                <td id="compt"> ??? </td>
                 <td>
-                  <a href="#">Modifier</a>
+                  <a href="#" class="modBtn" onclick="modParkingOpen('Themis')">Modifier</a>
                   <a href="#" onclick="delParking('Themis')">Supprimer</a>
                 </td>
               </tr>
               <tr id="Deambu">
-                <td>Deambu</td>
-                <td>Auto et vélo</td>
-                <td>141.215.287.3</td>
-                <td>17</td>
-                <td>deambuParking@univ-lyon1.fr</td>
-                <td> ??? </td>
+                <td id="name">Deambu</td>
+                <td id="type">Auto et vélo</td>
+                <td id="GPS">141.215.287.3</td>
+                <td id="place">17</td>
+                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                <td id="compt"> ??? </td>
                 <td>
-                  <a href="#">Modifier</a>
+                  <a href="#" class="modBtn" onclick="modParkingOpen('Deambu')">Modifier</a>
                   <a href="#" onclick="delParking('Deambu')">Supprimer</a>
                 </td>
               </tr>
@@ -142,7 +79,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -194,13 +131,71 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modifier le parking</h5><h5 class="modal-title" id="modifParkLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <table id="modPark">
+                <tr>
+                  <td><label>Nom : </label></td>
+                  <td><input type="text" id="modNom"></td>
+                </tr>
+                <tr>
+                  <td><label>Type de véichules : </label></td>
+                  <td>
+                    <input type="radio" id="modType1" name="modType" value="Auto" ><label for="newType1">Auto</label>
+                    <input type="radio" id="modType2" name="modType" value="Vélo"><label for="newType2">Vélo</label>
+                    <input type="radio" id="modType3" name="modType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label>Coordonnées GPS : </label></td>
+                  <td><input type="text" id="modGPS"></td>
+                </tr>
+                <tr>
+                  <td><label>Nombre de places : </label></td>
+                  <td><input type="text" id="modPlace"></td>
+                </tr>
+                <tr>
+                  <td><label>Mail responsable : </label></td>
+                  <td><input type="text" id="modMail"></td>
+                </tr>
+                <tr>
+                  <td><label>Système de comptabe : </label></td>
+                  <td><input type="text" id="modCompt"></td>
+                </tr>
+              </table>
+              
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <script>
       $(document).ready(function(){
           $("#btnPark").click(function(){
-              $("#myModal").modal();
+              $("#modalAdd").modal();
           });
       });
+
+      $(document).on('click','.modBtn',function(){
+              $("#modalModify").modal();
+      });
+      
     </script>
 
     <footer>
