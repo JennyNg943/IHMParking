@@ -10,181 +10,206 @@
   </head>
   <body>
     <header>
-      <h1>IHM Parking</h1>
+
     </header>
-    <div id="accordion">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Tableaux des parkings
-            </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btnPark">
-              Ajouter un parking
-            </button>
-          </h5>
-        </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            <table id="listParking">
-              <tr>
-                <th>Nom</th>
-                <th>Type de véhicule</th>
-                <th>Coordonnées GPS</th>
-                <th>Nombre de places</th>
-                <th>Email responsable</th>
-                <th>Système de comptabe</th>
-                <th>Action</th>
-              </tr>
-              <tr id="Nautibus">
-                <td id="name">Nautibus</td>
-                <td id="type">Auto et vélo</td>
-                <td id="GPS">201.25.254.3</td>
-                <td id="place">17</td>
-                <td id="mail">nautibusParking@univ-lyon1.fr</td>
-                <td id="compt"> ??? </td>
-                <td>
-                  <a href="#" class="modBtn" onclick="modParkingOpen('Nautibus')">Modifier</a>
-                  <a href="#" onclick="delParking('Nautibus')">Supprimer</a>
-                </td>
-              </tr>
-              <tr id="Themis">
-                <td id="name">Themis</td>
-                <td id="type">Auto</td>
-                <td id="GPS">281.25.154.2</td>
-                <td id="place">17</td>
-                <td id="mail">themisParking@univ-lyon1.fr</td>
-                <td id="compt"> ??? </td>
-                <td>
-                  <a href="#" class="modBtn" onclick="modParkingOpen('Themis')">Modifier</a>
-                  <a href="#" onclick="delParking('Themis')">Supprimer</a>
-                </td>
-              </tr>
-              <tr id="Deambu">
-                <td id="name">Deambu</td>
-                <td id="type">Auto et vélo</td>
-                <td id="GPS">141.215.287.3</td>
-                <td id="place">17</td>
-                <td id="mail">deambuParking@univ-lyon1.fr</td>
-                <td id="compt"> ??? </td>
-                <td>
-                  <a href="#" class="modBtn" onclick="modParkingOpen('Deambu')">Modifier</a>
-                  <a href="#" onclick="delParking('Deambu')">Supprimer</a>
-                </td>
-              </tr>
-            </table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-lg-2">
+      <nav class="navbar navbar-default navbar-fixed-side w-100 border-right">
+        <form class="form-inline">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">&#x1F50D;</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Recherche" aria-label="Recherche" aria-describedby="basic-addon1">
           </div>
-        </div>
-      </div>
+        </form>
+        <h1 class="text-center">IHM Parking</h1>
+        <ul class="list-group  w-100">
+          <a class="list-group-item" href="#">Accueil</a>
+          <a class="list-group-item" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
+        </ul>
+      </nav>
     </div>
+    <div class="col-sm-6 col-lg-10">
 
-    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajouter un parking</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+
+
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <button class="btn btn-link mb-0 w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h5 class="mb-0">
+                  Tableaux des parkings
+
+              </h5>
+              </button>
           </div>
-          <div class="modal-body">
-            <form>
-              <table id="addNewPark">
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <table id="listParking" class="table">
                 <tr>
-                  <td><label>Nom : </label></td>
-                  <td><input type="text" id="newNom"></td>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Type de véhicule</th>
+                  <th scope="col">Coordonnées GPS</th>
+                  <th scope="col">Nombre de places</th>
+                  <th scope="col">Email responsable</th>
+                  <th scope="col">Système de comptabe</th>
+                  <th scope="col">Action</th>
                 </tr>
-                <tr>
-                  <td><label>Type de véichules : </label></td>
+                <tr id="Nautibus">
+                  <td id="name">Nautibus</td>
+                  <td id="type">Auto et vélo</td>
+                  <td id="GPS">201.25.254.3</td>
+                  <td id="place">17</td>
+                  <td id="mail">nautibusParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
                   <td>
-                    <input type="radio" id="newType1" name="newType" value="Auto" checked="checked"><label for="newType1">Auto</label>
-                    <input type="radio" id="newType2" name="newType" value="Vélo"><label for="newType2">Vélo</label>
-                    <input type="radio" id="newType3" name="newType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                    <a href="#" class="modBtn" onclick="modParkingOpen('Nautibus')">Modifier</a>
+                    <a href="#" onclick="delParking('Nautibus')">Supprimer</a>
                   </td>
                 </tr>
-                <tr>
-                  <td><label>Coordonnées GPS : </label></td>
-                  <td><input type="text" id="newGPS" value="0.0.0.0"></td>
-                </tr>
-                <tr>
-                  <td><label>Nombre de places : </label></td>
-                  <td><input type="text" id="newNbPlaces" value="100"></td>
-                </tr>
-                <tr>
-                  <td><label>Mail responsable : </label></td>
-                  <td><input type="text" id="newMail"></td>
-                </tr>
-                <tr>
-                  <td><label>Système de comptabe : </label></td>
-                  <td><input type="text" id="newCompt" value="???"></td>
-                </tr>
-              </table>
-              
-              
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modifier le parking</h5><h5 class="modal-title" id="modifParkLabel"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <table id="modPark">
-                <tr>
-                  <td><label>Nom : </label></td>
-                  <td><input type="text" id="modNom"></td>
-                </tr>
-                <tr>
-                  <td><label>Type de véichules : </label></td>
+                <tr id="Themis">
+                  <td id="name">Themis</td>
+                  <td id="type">Auto</td>
+                  <td id="GPS">281.25.154.2</td>
+                  <td id="place">17</td>
+                  <td id="mail">themisParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
                   <td>
-                    <input type="radio" id="modType1" name="modType" value="Auto" ><label for="newType1">Auto</label>
-                    <input type="radio" id="modType2" name="modType" value="Vélo"><label for="newType2">Vélo</label>
-                    <input type="radio" id="modType3" name="modType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                    <a href="#" class="modBtn" onclick="modParkingOpen('Themis')">Modifier</a>
+                    <a href="#" onclick="delParking('Themis')">Supprimer</a>
                   </td>
                 </tr>
-                <tr>
-                  <td><label>Coordonnées GPS : </label></td>
-                  <td><input type="text" id="modGPS"></td>
-                </tr>
-                <tr>
-                  <td><label>Nombre de places : </label></td>
-                  <td><input type="text" id="modPlace"></td>
-                </tr>
-                <tr>
-                  <td><label>Mail responsable : </label></td>
-                  <td><input type="text" id="modMail"></td>
-                </tr>
-                <tr>
-                  <td><label>Système de comptabe : </label></td>
-                  <td><input type="text" id="modCompt"></td>
+                <tr id="Deambu">
+                  <td id="name">Deambu</td>
+                  <td id="type">Auto et vélo</td>
+                  <td id="GPS">141.215.287.3</td>
+                  <td id="place">17</td>
+                  <td id="mail">deambuParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
+                  <td>
+                    <a href="#" class="modBtn" onclick="modParkingOpen('Deambu')">Modifier</a>
+                    <a href="#" onclick="delParking('Deambu')">Supprimer</a>
+                  </td>
                 </tr>
               </table>
-              
-              
-            </form>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter un parking</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <table id="addNewPark">
+                  <tr>
+                    <td><label>Nom : </label></td>
+                    <td><input type="text" id="newNom"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Type de véichules : </label></td>
+                    <td>
+                      <input type="radio" id="newType1" name="newType" value="Auto" checked="checked"><label for="newType1">Auto</label>
+                      <input type="radio" id="newType2" name="newType" value="Vélo"><label for="newType2">Vélo</label>
+                      <input type="radio" id="newType3" name="newType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>Coordonnées GPS : </label></td>
+                    <td><input type="text" id="newGPS" value="0.0.0.0"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Nombre de places : </label></td>
+                    <td><input type="text" id="newNbPlaces" value="100"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Mail responsable : </label></td>
+                    <td><input type="text" id="newMail"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Système de comptabe : </label></td>
+                    <td><input type="text" id="newCompt" value="???"></td>
+                  </tr>
+                </table>
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modifier le parking</h5><h5 class="modal-title" id="modifParkLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <table id="modPark">
+                  <tr>
+                    <td><label>Nom : </label></td>
+                    <td><input type="text" id="modNom"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Type de véichules : </label></td>
+                    <td>
+                      <input type="radio" id="modType1" name="modType" value="Auto" ><label for="newType1">Auto</label>
+                      <input type="radio" id="modType2" name="modType" value="Vélo"><label for="newType2">Vélo</label>
+                      <input type="radio" id="modType3" name="modType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>Coordonnées GPS : </label></td>
+                    <td><input type="text" id="modGPS"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Nombre de places : </label></td>
+                    <td><input type="text" id="modPlace"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Mail responsable : </label></td>
+                    <td><input type="text" id="modMail"></td>
+                  </tr>
+                  <tr>
+                    <td><label>Système de comptabe : </label></td>
+                    <td><input type="text" id="modCompt"></td>
+                  </tr>
+                </table>
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
+  </div>
+</div>
+
     <script>
       $(document).ready(function(){
           $("#btnPark").click(function(){
@@ -195,13 +220,13 @@
       $(document).on('click','.modBtn',function(){
               $("#modalModify").modal();
       });
-      
+
     </script>
 
     <footer>
 
     </footer>
   </body>
-  
+
 
 </html>
