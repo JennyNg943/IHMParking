@@ -1,4 +1,5 @@
 function delParking(park){
+
         var item = document.getElementById(park);
         item.parentNode.removeChild(item);
       }
@@ -20,6 +21,8 @@ function delParking(park){
         var parkMail = document.getElementById(m).value;
         var parkCompt = document.getElementById(c).value;
         
+        
+
         var park = document.createElement('tr');
         park.setAttribute('id', parkName);
 
@@ -119,4 +122,63 @@ function delParking(park){
         park.querySelector('#place').innerHTML = parkPlace;
         park.querySelector('#mail').innerHTML = parkMail;
         park.querySelector('#compt').innerHTML = parkCompt;
+      } 
+
+      function verifEntree(n, g, p, m, c){
+        var parkName = document.getElementById(n).value;
+        var parkGPS = document.getElementById(g).value;
+        var parkPlace = document.getElementById(p).value;
+        var parkMail = document.getElementById(m).value;
+        var parkCompt = document.getElementById(c).value;
+        var na = false, gp = false, pl = false, ma = false, co = false;
+
+        if(!(/^[a-zA-Z()]+$/.test(parkName))){
+            document.getElementById(n).setAttribute('class', 'inputParkingFalse');
+            na = false;
+        } else{
+            document.getElementById(n).setAttribute('class', 'inputParkingTrue');
+            na = true;
+        }
+
+        if(/^[a-zA-Z()]+$/.test(parkGPS) || parkGPS == ""){
+            document.getElementById(g).setAttribute('class', 'inputParkingFalse');
+            gp = false;
+        } else {
+            document.getElementById(g).setAttribute('class', 'inputParkingTrue');
+            gp = true;
+        }
+
+        if(/^[a-zA-Z()]+$/.test(parkPlace) || parkPlace == ""){
+            document.getElementById(p).setAttribute('class', 'inputParkingFalse');
+            pl = false;
+        } else {
+            document.getElementById(p).setAttribute('class', 'inputParkingTrue');
+            pl = true;
+        }
+
+        if(!(/^[a-zA-Z()@.]+$/.test(parkMail)) || !(parkMail.includes('@')) || !(parkMail.includes('.'))){
+            document.getElementById(m).setAttribute('class', 'inputParkingFalse');
+            ma = false;
+        } else {
+            document.getElementById(m).setAttribute('class', 'inputParkingTrue');
+            ma = true;
+        }
+
+        if(parkCompt == ""){
+            document.getElementById(c).setAttribute('class', 'inputParkingFalse');
+            co = false;
+        } else {
+            document.getElementById(c).setAttribute('class', 'inputParkingTrue');
+            co = true;
+        }
+
+        if(na && gp && pl && ma && co){
+            document.getElementById('btnAddPark').setAttribute('class', 'btn btn-success');
+            document.getElementById('btnAddPark').disabled = false;
+        } else {
+            document.getElementById('btnAddPark').setAttribute('class', 'btn btn-warning');
+            document.getElementById('btnAddPark').disabled = true;
+
+        }
+
       }
