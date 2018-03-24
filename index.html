@@ -13,29 +13,25 @@
 
     </header>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4 col-lg-2">
-      <nav class="navbar navbar-default navbar-fixed-side w-100 border-right">
-        <form class="form-inline">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">&#x1F50D;</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Recherche" aria-label="Recherche" aria-describedby="basic-addon1">
-          </div>
-        </form>
-        <h1 class="text-center">IHM Parking</h1>
-        <ul class="list-group  w-100">
-          <a class="list-group-item" href="#">Accueil</a>
-          <a class="list-group-item" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
-        </ul>
-      </nav>
+      <div class="jumbotron jumbotron-fluid mb-0 bg-primary">
+        <h1 class="text-center text-white">IHM Parking</h1>
+      </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link text-white" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">&#x1F50D;</button>
+      </form>
     </div>
-    <div class="col-sm-6 col-lg-10">
-
-
-
+  </nav>
+<div class="container mt-5">
+    <div>
       <div id="accordion">
         <div class="card">
           <div class="card-header" id="headingOne">
@@ -48,51 +44,148 @@
           </div>
 
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body table-responsive">
               <table id="listParking" class="table">
-                <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Type de véhicule</th>
-                  <th scope="col">Coordonnées GPS</th>
-                  <th scope="col">Nombre de places</th>
-                  <th scope="col">Email responsable</th>
-                  <th scope="col">Système de comptabe</th>
-                  <th scope="col">Action</th>
-                </tr>
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Type de véhicule</th>
+                    <th scope="col">Coordonnées GPS</th>
+                    <th scope="col">Nombre de places</th>
+                    <th scope="col">Email responsable</th>
+                    <th scope="col">Système de comptabe</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
                 <tr id="Nautibus">
                   <td id="name">Nautibus</td>
-                  <td id="type">Auto et vélo</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
                   <td id="GPS">201.25.254.3</td>
                   <td id="place">17</td>
                   <td id="mail">nautibusParking@univ-lyon1.fr</td>
                   <td id="compt"> ??? </td>
                   <td>
-                    <a href="#" class="modBtn" onclick="modParkingOpen('Nautibus')">Modifier</a>
-                    <a href="#" onclick="delParking('Nautibus')">Supprimer</a>
+                    <button type="button" class="modBtn btn"  onclick="modParkingOpen('Nautibus')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Nautibus')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
                   </td>
                 </tr>
                 <tr id="Themis">
                   <td id="name">Themis</td>
-                  <td id="type">Auto</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                  </td>
                   <td id="GPS">281.25.154.2</td>
                   <td id="place">17</td>
                   <td id="mail">themisParking@univ-lyon1.fr</td>
                   <td id="compt"> ??? </td>
                   <td>
-                    <a href="#" class="modBtn" onclick="modParkingOpen('Themis')">Modifier</a>
-                    <a href="#" onclick="delParking('Themis')">Supprimer</a>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Themis')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Themis')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
                   </td>
                 </tr>
                 <tr id="Deambu">
                   <td id="name">Deambu</td>
-                  <td id="type">Auto et vélo</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
                   <td id="GPS">141.215.287.3</td>
                   <td id="place">17</td>
                   <td id="mail">deambuParking@univ-lyon1.fr</td>
                   <td id="compt"> ??? </td>
                   <td>
-                    <a href="#" class="modBtn" onclick="modParkingOpen('Deambu')">Modifier</a>
-                    <a href="#" onclick="delParking('Deambu')">Supprimer</a>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Deambu')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Deambu')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
+                  </td>
+                </tr>
+                <tr id="Nautibus2">
+                  <td id="name">Nautibus 2</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
+                  <td id="GPS">141.215.287.3</td>
+                  <td id="place">17</td>
+                  <td id="mail">deambuParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
+                  <td>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Nautibus2')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Nautibus2')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
+                  </td>
+                </tr>
+                <tr id="Déambu2">
+                  <td id="name">Déambu 2</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
+                  <td id="GPS">141.215.287.3</td>
+                  <td id="place">17</td>
+                  <td id="mail">deambuParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
+                  <td>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Déambu2')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Déambu2')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
+                  </td>
+                </tr>
+                <tr id="Astree">
+                  <td id="name">Astree</td>
+                  <td id="type">
+                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
+                  <td id="GPS">10.215.287.3</td>
+                  <td id="place">15</td>
+                  <td id="mail">deambuParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
+                  <td>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Astree')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('Astree')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
+                  </td>
+                </tr>
+                <tr id="MarieCurie">
+                  <td id="name">Marie Curie</td>
+                  <td id="type">
+                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                  </td>
+                  <td id="GPS">152.215.287.3</td>
+                  <td id="place">15</td>
+                  <td id="mail">deambuParking@univ-lyon1.fr</td>
+                  <td id="compt"> ??? </td>
+                  <td>
+                    <button type="button" class="modBtn btn" onclick="modParkingOpen('MarieCurie')">
+                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                    </button>
+                    <button type="button" class="btn" onclick="delParking('MarieCurie')">
+                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                    </button>
                   </td>
                 </tr>
               </table>
@@ -209,7 +302,7 @@
     </div>
   </div>
 </div>
-
+</div>
     <script>
       $(document).ready(function(){
           $("#btnPark").click(function(){
@@ -223,8 +316,11 @@
 
     </script>
 
-    <footer>
-
+    <footer class="card text-center mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Projet IHM 2018</h5>
+        <p class="card-text">NGUYEN Jenny (p1502868) - LABRUX Thomas (p)</p>
+      </div>
     </footer>
   </body>
 
