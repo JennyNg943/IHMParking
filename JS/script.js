@@ -54,17 +54,7 @@ function addPark(n, t, g, p, m, c){
     aSuppr.setAttribute('class', 'btn');
     aSuppr.setAttribute('type', 'button');
     aSuppr.innerHTML += ' <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">';
-    /*
-    var aModif = document.createElement('a');
-    aModif.setAttribute('href', '#');
-    aModif.setAttribute('class', 'modBtn');
-    aModif.setAttribute('onclick', 'modParkingOpen("'+parkName+'")');
-    aModif.innerHTML += 'Modifier';
-    var aSuppr = document.createElement('a');
-    aSuppr.setAttribute('href', '#');
-    aSuppr.setAttribute('onclick', 'delParking("'+parkName+'")');
-    aSuppr.innerHTML += ' Supprimer';
-    */
+
 
     parkTdAction.appendChild(aModif);
     parkTdAction.appendChild(aSuppr);
@@ -137,7 +127,7 @@ function modParking(pa, n, t, g, p, m, c){
 $(document).ready(function () {
 
     /**
-     * @description: barre de recherche, event: quand on appuie sur une touche dans l'input, on va chercher
+     * @description: event barre de recherche : quand on appuie sur une touche dans l'input, on va chercher
      *               tous les noms de parking et on les parcourt : si un nom contient ce que l'user a tapé
      *               dans l'input, on affiche la ligne du tableau correspondante, sinon on la cache
      *               (display table-row parce que c'est le seul qui ne casse pas tout)
@@ -145,14 +135,7 @@ $(document).ready(function () {
     $('#searchBar').keyup(function () {
         var user_input = this.value;
         if(user_input.length > 0){
-            $('.parking_name').each(function (key, value) {
-                if(value.innerText.toString().toLowerCase().includes(user_input.toLowerCase())){
-                    console.log('contains');
-                    value.parentNode.style.display = 'table-row';
-                }else{
-                    value.parentNode.style.display = 'none';
-                }
-            });
+            search(user_input);
         }else{
             $('.parking_name').each(function (key, value) {
                 value.parentNode.style.display = 'table-row';
@@ -171,12 +154,28 @@ $(document).ready(function () {
         });
 
         $( "#searchBar" ).autocomplete({
-            source: availableTags
+            source: availableTags,
+            select: function( event, ui ) {
+                search(ui.item.value);
+            }
         });
     });
 
-
 });
+
+/**
+ * @description: cherche un parking avec le nom passé en paramètre
+ * @param user_input: nom du parking à rechercher
+ */
+function search(user_input){
+    $('.parking_name').each(function (key, value) {
+        if(value.innerText.toString().toLowerCase().includes(user_input.toLowerCase())){
+            value.parentNode.style.display = 'table-row';
+        }else{
+            value.parentNode.style.display = 'none';
+        }
+    });
+}
 
 
 
