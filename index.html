@@ -1,328 +1,336 @@
 <html>
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="JS/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
 
-  </head>
-  <body>
-    <header>
+</head>
+<body>
+<header>
 
-    </header>
+</header>
 
-      <div class="jumbotron jumbotron-fluid mb-0 bg-primary">
-        <h1 class="text-center text-white">IHM Parking</h1>
-      </div>
+<div class="jumbotron jumbotron-fluid mb-0 bg-primary">
+    <h1 class="text-center text-white">IHM Parking</h1>
+</div>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary ">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary ">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link text-white" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">&#x1F50D;</button>
-      </form>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link text-white" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="searchBar" class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">&#x1F50D;</button>-->
+        </form>
     </div>
-  </nav>
+</nav>
 <div class="container mt-5">
     <div>
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <button class="btn btn-link mb-0 w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h5 class="mb-0">
-                  Tableaux des parkings
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <button class="btn btn-link mb-0 w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h5 class="mb-0">
+                            Tableaux des parkings
 
-              </h5>
-              </button>
-          </div>
+                        </h5>
+                    </button>
+                </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body table-responsive">
-              <table id="listParking" class="table">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Type de véhicule</th>
-                    <th scope="col">Coordonnées GPS</th>
-                    <th scope="col">Nombre de places</th>
-                    <th scope="col">Email responsable</th>
-                    <th scope="col">Système de comptabe</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tr id="Nautibus">
-                  <td id="name">Nautibus</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">201.25.254.3</td>
-                  <td id="place">17</td>
-                  <td id="mail">nautibusParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn"  onclick="modParkingOpen('Nautibus')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Nautibus')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="Themis">
-                  <td id="name">Themis</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                  </td>
-                  <td id="GPS">281.25.154.2</td>
-                  <td id="place">17</td>
-                  <td id="mail">themisParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Themis')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Themis')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="Deambu">
-                  <td id="name">Deambu</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">141.215.287.3</td>
-                  <td id="place">17</td>
-                  <td id="mail">deambuParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Deambu')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Deambu')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="Nautibus2">
-                  <td id="name">Nautibus 2</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">141.215.287.3</td>
-                  <td id="place">17</td>
-                  <td id="mail">deambuParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Nautibus2')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Nautibus2')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="Déambu2">
-                  <td id="name">Déambu 2</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">141.215.287.3</td>
-                  <td id="place">17</td>
-                  <td id="mail">deambuParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Déambu2')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Déambu2')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="Astree">
-                  <td id="name">Astree</td>
-                  <td id="type">
-                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">10.215.287.3</td>
-                  <td id="place">15</td>
-                  <td id="mail">deambuParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Astree')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('Astree')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-                <tr id="MarieCurie">
-                  <td id="name">Marie Curie</td>
-                  <td id="type">
-                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
-                  </td>
-                  <td id="GPS">152.215.287.3</td>
-                  <td id="place">15</td>
-                  <td id="mail">deambuParking@univ-lyon1.fr</td>
-                  <td id="compt"> ??? </td>
-                  <td>
-                    <button type="button" class="modBtn btn" onclick="modParkingOpen('MarieCurie')">
-                      <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
-                    </button>
-                    <button type="button" class="btn" onclick="delParking('MarieCurie')">
-                      <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
-                    </button>
-                  </td>
-                </tr>
-              </table>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body table-responsive">
+                        <table id="listParking" class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Type de véhicule</th>
+                                <th scope="col">Coordonnées GPS</th>
+                                <th scope="col">Nombre de places</th>
+                                <th scope="col">Email responsable</th>
+                                <th scope="col">Système de comptabe</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tr id="Nautibus">
+                                <td class="parking_name" id="name">Nautibus</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">201.25.254.3</td>
+                                <td id="place">17</td>
+                                <td id="mail">nautibusParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn"  onclick="modParkingOpen('Nautibus')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Nautibus')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Themis">
+                                <td class="parking_name" id="name">Themis</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                </td>
+                                <td id="GPS">281.25.154.2</td>
+                                <td id="place">17</td>
+                                <td id="mail">themisParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Themis')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Themis')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Deambu">
+                                <td class="parking_name" id="name">Deambu</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">141.215.287.3</td>
+                                <td id="place">17</td>
+                                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Deambu')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Deambu')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Nautibus2">
+                                <td class="parking_name" id="name">Nautibus 2</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">141.215.287.3</td>
+                                <td id="place">17</td>
+                                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Nautibus2')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Nautibus2')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Déambu2">
+                                <td class="parking_name" id="name">Déambu 2</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">141.215.287.3</td>
+                                <td id="place">17</td>
+                                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Déambu2')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Déambu2')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="Astree">
+                                <td class="parking_name" id="name">Astree</td>
+                                <td id="type">
+                                    <img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">10.215.287.3</td>
+                                <td id="place">15</td>
+                                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('Astree')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('Astree')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="MarieCurie">
+                                <td class="parking_name" id="name">Marie Curie</td>
+                                <td id="type">
+                                    <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">
+                                </td>
+                                <td id="GPS">152.215.287.3</td>
+                                <td id="place">15</td>
+                                <td id="mail">deambuParking@univ-lyon1.fr</td>
+                                <td id="compt"> ??? </td>
+                                <td>
+                                    <button type="button" class="modBtn btn" onclick="modParkingOpen('MarieCurie')">
+                                        <img src="IMG/Modifier.png" style="width: 1rem;" alt="Modifier">
+                                    </button>
+                                    <button type="button" class="btn" onclick="delParking('MarieCurie')">
+                                        <img src="IMG/Supprimer.png" style="width: 1rem;" alt="Supprimer">
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ajouter un parking</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <table id="addNewPark">
-                  <tr>
-                    <td><label>Nom : </label></td>
-                    <td><input type="text" id="newNom"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Type de véichules : </label></td>
-                    <td>
-                      <input type="radio" id="newType1" name="newType" value="Auto" checked="checked"><label for="newType1">Auto</label>
-                      <input type="radio" id="newType2" name="newType" value="Vélo"><label for="newType2">Vélo</label>
-                      <input type="radio" id="newType3" name="newType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label>Coordonnées GPS : </label></td>
-                    <td><input type="text" id="newGPS" value="0.0.0.0"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Nombre de places : </label></td>
-                    <td><input type="text" id="newNbPlaces" value="100"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Mail responsable : </label></td>
-                    <td><input type="text" id="newMail"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Système de comptabe : </label></td>
-                    <td><input type="text" id="newCompt" value="???"></td>
-                  </tr>
-                </table>
+        <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter un parking</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <table id="addNewPark">
+                                <tr>
+                                    <td><label>Nom : </label></td>
+                                    <td><input type="text" id="newNom"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Type de véichules : </label></td>
+                                    <td>
+                                        <input type="radio" id="newType1" name="newType" value="Auto" checked="checked"><label for="newType1">Auto</label>
+                                        <input type="radio" id="newType2" name="newType" value="Vélo"><label for="newType2">Vélo</label>
+                                        <input type="radio" id="newType3" name="newType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label>Coordonnées GPS : </label></td>
+                                    <td><input type="text" id="newGPS" value="0.0.0.0"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nombre de places : </label></td>
+                                    <td><input type="text" id="newNbPlaces" value="100"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Mail responsable : </label></td>
+                                    <td><input type="text" id="newMail"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Système de comptabe : </label></td>
+                                    <td><input type="text" id="newCompt" value="???"></td>
+                                </tr>
+                            </table>
 
 
-              </form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modifier le parking</h5><h5 class="modal-title" id="modifParkLabel"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <table id="modPark">
-                  <tr>
-                    <td><label>Nom : </label></td>
-                    <td><input type="text" id="modNom"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Type de véichules : </label></td>
-                    <td>
-                      <input type="radio" id="modType1" name="modType" value="Auto" ><label for="newType1">Auto</label>
-                      <input type="radio" id="modType2" name="modType" value="Vélo"><label for="newType2">Vélo</label>
-                      <input type="radio" id="modType3" name="modType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label>Coordonnées GPS : </label></td>
-                    <td><input type="text" id="modGPS"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Nombre de places : </label></td>
-                    <td><input type="text" id="modPlace"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Mail responsable : </label></td>
-                    <td><input type="text" id="modMail"></td>
-                  </tr>
-                  <tr>
-                    <td><label>Système de comptabe : </label></td>
-                    <td><input type="text" id="modCompt"></td>
-                  </tr>
-                </table>
+        <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier le parking</h5><h5 class="modal-title" id="modifParkLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <table id="modPark">
+                                <tr>
+                                    <td><label>Nom : </label></td>
+                                    <td><input type="text" id="modNom"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Type de véichules : </label></td>
+                                    <td>
+                                        <input type="radio" id="modType1" name="modType" value="Auto" ><label for="newType1">Auto</label>
+                                        <input type="radio" id="modType2" name="modType" value="Vélo"><label for="newType2">Vélo</label>
+                                        <input type="radio" id="modType3" name="modType" value="Auto et vélo"><label for="newType3">Auto et vélo</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label>Coordonnées GPS : </label></td>
+                                    <td><input type="text" id="modGPS"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nombre de places : </label></td>
+                                    <td><input type="text" id="modPlace"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Mail responsable : </label></td>
+                                    <td><input type="text" id="modMail"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Système de comptabe : </label></td>
+                                    <td><input type="text" id="modCompt"></td>
+                                </tr>
+                            </table>
 
 
-              </form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 </div>
-    <script>
-      $(document).ready(function(){
-          $("#btnPark").click(function(){
-              $("#modalAdd").modal();
-          });
-      });
+</div>
 
-      $(document).on('click','.modBtn',function(){
-              $("#modalModify").modal();
-      });
 
-    </script>
-
-    <footer class="card text-center mt-5">
-      <div class="card-body">
+<footer class="card text-center mt-5">
+    <div class="card-body">
         <h5 class="card-title">Projet IHM 2018</h5>
         <p class="card-text">NGUYEN Jenny (p1502868) - LABRUX Thomas (p)</p>
-      </div>
-    </footer>
-  </body>
+    </div>
+</footer>
 
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="JS/script.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#btnPark").click(function(){
+            $("#modalAdd").modal();
+        });
+    });
+
+    $(document).on('click','.modBtn',function(){
+        $("#modalModify").modal();
+    });
+
+</script>
+</body>
 
 </html>
