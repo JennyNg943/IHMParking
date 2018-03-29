@@ -1,6 +1,9 @@
+ var availableTags = [];
+
 function delParking(park){
     var item = document.getElementById(park);
     item.parentNode.removeChild(item);
+
 }
 
 function addPark(n, t, g, p, m, c){
@@ -14,7 +17,13 @@ function addPark(n, t, g, p, m, c){
             break;
         }
     }
-
+    if(parkType == "Auto"){
+        parkType = '<img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">'
+    } else if(parkType == "Vélo"){
+        parkType = '<img src="IMG/Velo.png" style="width: 2rem;" alt="Auto">'
+    }else{
+        parkType = '<img src="IMG/Auto.png" style="width: 2rem;" alt="Auto"> <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">'
+    }
     var parkGPS = document.getElementById(g).value;
     var parkPlace = document.getElementById(p).value;
     var parkMail = document.getElementById(m).value;
@@ -25,6 +34,7 @@ function addPark(n, t, g, p, m, c){
 
     var parkTdNom = document.createElement('td');
     parkTdNom.setAttribute('id', 'name');
+    parkTdNom.setAttribute('class', 'parking_name');
     parkTdNom.innerHTML += parkName;
     var parkTdType = document.createElement('td');
     parkTdType.setAttribute('id', 'type');
@@ -111,6 +121,13 @@ function modParking(pa, n, t, g, p, m, c){
         }
     }
 
+    if(parkType == "Auto"){
+        parkType = '<img src="IMG/Auto.png" style="width: 2rem;" alt="Auto">'
+    } else if(parkType == "Vélo"){
+        parkType = '<img src="IMG/Velo.png" style="width: 2rem;" alt="Auto">'
+    }else{
+        parkType = '<img src="IMG/Auto.png" style="width: 2rem;" alt="Auto"> <img src="IMG/Velo.png" style="width: 2rem;" alt="Velo">'
+    }
     var parkGPS = document.getElementById(g).value;
     var parkPlace = document.getElementById(p).value;
     var parkMail = document.getElementById(m).value;
@@ -122,7 +139,70 @@ function modParking(pa, n, t, g, p, m, c){
     park.querySelector('#place').innerHTML = parkPlace;
     park.querySelector('#mail').innerHTML = parkMail;
     park.querySelector('#compt').innerHTML = parkCompt;
+
 }
+
+function verifEntree(n, g, p, m, c){
+
+        var regex = new RegExp(/([0-9\.])/);
+
+        var parkName = document.getElementById(n).value;
+        var parkGPS = document.getElementById(g).value;
+        var parkPlace = document.getElementById(p).value;
+        var parkMail = document.getElementById(m).value;
+        var parkCompt = document.getElementById(c).value;
+        var na = false, gp = false, pl = false, ma = false, co = false;
+
+        if(!/[a-zA-Z]/.test(parkName)){
+            document.getElementById(n).setAttribute('class', 'form-control is-invalid');
+            na = false;
+        } else{
+            document.getElementById(n).setAttribute('class', 'form-control is-valid');
+            na = true;
+        }
+
+        if(!/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/.test(parkGPS) || !parkGPS){
+            document.getElementById(g).setAttribute('class', 'form-control is-invalid');
+            gp = false;
+        } else {
+            document.getElementById(g).setAttribute('class', 'form-control is-valid');
+            gp = true;
+        }
+
+        if(/[a-zA-Z()@.]/.test(parkPlace) || !parkPlace){
+            document.getElementById(p).setAttribute('class', 'form-control is-invalid');
+            pl = false;
+        } else {
+            document.getElementById(p).setAttribute('class', 'form-control is-valid');
+            pl = true;
+        }
+
+        if(!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(parkMail)) || !(parkMail.includes('@')) || !(parkMail.includes('.'))){
+            document.getElementById(m).setAttribute('class', 'form-control is-invalid');
+            ma = false;
+        } else {
+            document.getElementById(m).setAttribute('class', 'form-control is-valid');
+            ma = true;
+        }
+
+        if(!parkCompt){
+            document.getElementById(c).setAttribute('class', 'form-control is-invalid');
+            co = false;
+        } else {
+            document.getElementById(c).setAttribute('class', 'form-control is-valid');
+            co = true;
+        }
+
+        if(na && gp && pl && ma && co){
+            document.getElementById('btnAddPark').setAttribute('class', 'btn btn-success');
+            document.getElementById('btnAddPark').disabled = false;
+        } else {
+            document.getElementById('btnAddPark').setAttribute('class', 'btn btn-warning');
+            document.getElementById('btnAddPark').disabled = true;
+
+        }
+
+      }
 
 $(document).ready(function () {
 
@@ -143,7 +223,7 @@ $(document).ready(function () {
         }
     });
 
-    var availableTags = [];
+   
 
     /**
      * @description: autocomplete avec jQuery-UI

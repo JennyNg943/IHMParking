@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-                <a class="nav-link text-white" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
+                <a class="nav-link text-white" onclick="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')" data-toggle="modal" href="#exampleModal" id="btnPark">Ajouter un parking</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -205,7 +205,7 @@
                             <table id="addNewPark">
                                 <tr>
                                     <td><label>Nom : </label></td>
-                                    <td><input type="text" id="newNom"></td>
+                                    <td><input type="text" id="newNom" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Type de véichules : </label></td>
@@ -217,19 +217,19 @@
                                 </tr>
                                 <tr>
                                     <td><label>Coordonnées GPS : </label></td>
-                                    <td><input type="text" id="newGPS" value="0.0.0.0"></td>
+                                    <td><input type="text" id="newGPS" value="0.0.0.0" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Nombre de places : </label></td>
-                                    <td><input type="text" id="newNbPlaces" value="100"></td>
+                                    <td><input type="text" id="newNbPlaces" value="100" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Mail responsable : </label></td>
-                                    <td><input type="text" id="newMail"></td>
+                                    <td><input type="text" id="newMail" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Système de comptabe : </label></td>
-                                    <td><input type="text" id="newCompt" value="???"></td>
+                                    <td><input type="text" id="newCompt" value="???" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                             </table>
 
@@ -238,7 +238,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
+                        <button type="button" id="btnAddPark" class="btn btn-primary" data-dismiss="modal" onclick="addPark('newNom', 'newType', 'newGPS','newNbPlaces', 'newMail', 'newCompt')">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                             <table id="modPark">
                                 <tr>
                                     <td><label>Nom : </label></td>
-                                    <td><input type="text" id="modNom"></td>
+                                    <td><input type="text" id="modNom" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Type de véichules : </label></td>
@@ -270,19 +270,19 @@
                                 </tr>
                                 <tr>
                                     <td><label>Coordonnées GPS : </label></td>
-                                    <td><input type="text" id="modGPS"></td>
+                                    <td><input type="text" id="modGPS" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Nombre de places : </label></td>
-                                    <td><input type="text" id="modPlace"></td>
+                                    <td><input type="text" id="modPlace" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Mail responsable : </label></td>
-                                    <td><input type="text" id="modMail"></td>
+                                    <td><input type="text" id="modMail" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Système de comptabe : </label></td>
-                                    <td><input type="text" id="modCompt"></td>
+                                    <td><input type="text" id="modCompt" onkeyup="verifEntree('newNom', 'newGPS','newNbPlaces', 'newMail', 'newCompt')"></td>
                                 </tr>
                             </table>
 
@@ -291,7 +291,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAddPark" onclick="modParking('modifParkLabel', 'modNom', 'modType', 'modGPS','modPlace', 'modMail', 'modCompt')">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -305,7 +305,7 @@
 <footer class="card text-center mt-5">
     <div class="card-body">
         <h5 class="card-title">Projet IHM 2018</h5>
-        <p class="card-text">NGUYEN Jenny (p1502868) - LABRUX Thomas (p)</p>
+        <p class="card-text">NGUYEN Jenny (p1502868) - LABRUX Thomas (p1501839)</p>
     </div>
 </footer>
 
