@@ -1,9 +1,25 @@
- var availableTags = [];
+
 
 function delParking(park){
     var item = document.getElementById(park);
     item.parentNode.removeChild(item);
+    
+    var availableTags = [];
+    /**
+     * @description: autocomplete avec jQuery-UI
+     */
+    setTimeout(function () {
+        $('.parking_name').each(function (key, value) {
+            availableTags.push(value.innerText);
+        });
 
+        $( "#searchBar" ).autocomplete({
+            source: availableTags,
+            select: function( event, ui ) {
+                search(ui.item.value);
+            }
+        });
+    });
 }
 
 function addPark(n, t, g, p, m, c){
@@ -79,6 +95,23 @@ function addPark(n, t, g, p, m, c){
 
     document.getElementById('listParking').appendChild(park);
 
+    var availableTags = [];
+    /**
+     * @description: autocomplete avec jQuery-UI
+     */
+    setTimeout(function () {
+        $('.parking_name').each(function (key, value) {
+            availableTags.push(value.innerText);
+        });
+
+        $( "#searchBar" ).autocomplete({
+            source: availableTags,
+            select: function( event, ui ) {
+                search(ui.item.value);
+            }
+        });
+    });
+
 }
 
 function modParkingOpen(p){
@@ -139,6 +172,23 @@ function modParking(pa, n, t, g, p, m, c){
     park.querySelector('#place').innerHTML = parkPlace;
     park.querySelector('#mail').innerHTML = parkMail;
     park.querySelector('#compt').innerHTML = parkCompt;
+
+    var availableTags = [];
+    /**
+     * @description: autocomplete avec jQuery-UI
+     */
+    setTimeout(function () {
+        $('.parking_name').each(function (key, value) {
+            availableTags.push(value.innerText);
+        });
+
+        $( "#searchBar" ).autocomplete({
+            source: availableTags,
+            select: function( event, ui ) {
+                search(ui.item.value);
+            }
+        });
+    });
 
 }
 
@@ -224,7 +274,7 @@ $(document).ready(function () {
     });
 
    
-
+    var availableTags = [];
     /**
      * @description: autocomplete avec jQuery-UI
      */
